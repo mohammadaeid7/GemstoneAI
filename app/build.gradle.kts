@@ -59,26 +59,29 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.15.0")
-    implementation("androidx.activity:activity-compose:1.12.2")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
+    // Compose BOM (يختار نسخ Compose المتوافقة تلقائياً)
+    implementation(platform("androidx.compose:compose-bom:+"))
 
-    // Compose
-    implementation("androidx.compose.ui:ui:1.10.0")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.10.0")
-    implementation("androidx.compose.material3:material3:1.4.0")
+    // AndroidX الأساسيات
+    implementation("androidx.core:core-ktx:+")
+    implementation("androidx.activity:activity-compose:+")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:+")
+    implementation("androidx.navigation:navigation-compose:+")
+    implementation("androidx.datastore:datastore-preferences:+")
+
+    // Compose (بدون أرقام إصدارات)
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material-icons-extended")
-    implementation("androidx.navigation:navigation-compose:2.8.7")
 
-    // DataStore (for settings & history)
-    implementation("androidx.datastore:datastore-preferences:1.1.6")
-
-    // ML Kit (on-device AI image labeling)
+    // ML Kit (اتركه ثابتاً)
     implementation("com.google.mlkit:image-labeling:17.0.9")
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:+")
 
-    debugImplementation("androidx.compose.ui:ui-tooling:1.10.0")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.10.0")
+    // Debug
+    debugImplementation("androidx.compose.ui:ui-tooling")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
