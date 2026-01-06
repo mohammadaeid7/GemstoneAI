@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Gemstone AI</string>
+    <string name="tab_analyze">تحليل</string>
+    <string name="tab_history">السجل</string>
+    <string name="tab_settings">الإعدادات</string>
+
+    <string name="pick_from_gallery">اختيار من المعرض</string>
+    <string name="take_photo">التقاط صورة</string>
+    <string name="no_image">لم يتم اختيار صورة بعد</string>
+
+    <string name="gem_type">نوع الحجر</string>
+    <string name="weight_carat">الوزن (قيراط)</string>
+    <string name="quality">الجودة</string>
+    <string name="purity">النقاء</string>
+    <string name="estimate_price">تقدير السعر</string>
+    <string name="estimated_value">القيمة التقديرية</string>
+    <string name="disclaimer">ملاحظة: هذه تقديرات تعليمية وليست سعراً سوقياً رسمياً. للحصول على تقييم دقيق يلزم فحص مختبري وشهادة (GIA/IGI…)</string>
+
+    <string name="currency">العملة</string>
+    <string name="rate_to_usd">سعر التحويل مقابل USD</string>
+    <string name="save">حفظ</string>
+</resources>

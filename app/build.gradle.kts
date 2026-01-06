@@ -1,0 +1,84 @@
+plugins {
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+}
+
+android {
+    namespace = "com.example.gemstoneai"
+    compileSdk = 35
+
+    defaultConfig {
+        applicationId = "com.example.gemstoneai"
+        minSdk = 24
+        targetSdk = 35
+        versionCode = 1
+        versionName = "1.0.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        debug {
+            // Debug build
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
+    // Compose compiler extension version per AndroidX Compose release docs.
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.15"
+    }
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+}
+
+dependencies {
+    implementation("androidx.core:core-ktx:1.15.0")
+    implementation("androidx.activity:activity-compose:1.12.2")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
+
+    // Compose
+    implementation("androidx.compose.ui:ui:1.10.0")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.10.0")
+    implementation("androidx.compose.material3:material3:1.4.0")
+    implementation("androidx.compose.material:material-icons-extended:1.10.0")
+    implementation("androidx.navigation:navigation-compose:2.8.7")
+
+    // DataStore (for settings & history)
+    implementation("androidx.datastore:datastore-preferences:1.1.6")
+
+    // ML Kit (on-device AI image labeling)
+    implementation("com.google.mlkit:image-labeling:17.0.9")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+
+    debugImplementation("androidx.compose.ui:ui-tooling:1.10.0")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:1.10.0")
+}

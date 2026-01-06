@@ -1,0 +1,13 @@
+<resources>
+    <color name="md_theme_light_primary">#2E7D32</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_background">#FFFFFF</color>
+    <color name="md_theme_light_onBackground">#111111</color>
+
+    <color name="md_theme_dark_primary">#81C784</color>
+    <color name="md_theme_dark_onPrimary">#111111</color>
+    <color name="md_theme_dark_background">#111111</color>
+    <color name="md_theme_dark_onBackground">#FFFFFF</color>
+
+    <color name="ic_launcher_background">#FFFFFF</color>
+</resources>
