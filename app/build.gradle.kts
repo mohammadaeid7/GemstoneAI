@@ -3,6 +3,14 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+/**
+ * Prevent pulling androidx.navigationevent:* which currently requires compileSdk 36
+ * and newer Android Gradle Plugin than this project uses.
+ */
+configurations.configureEach {
+    exclude(group = "androidx.navigationevent")
+}
+
 android {
     namespace = "com.example.gemstoneai"
     compileSdk = 35
@@ -15,6 +23,7 @@ android {
         versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -46,7 +55,7 @@ android {
         compose = true
     }
 
-    // Compose compiler extension version per AndroidX Compose release docs.
+    // Keep as-is; compatible with the BOM below.
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.15"
     }
@@ -59,29 +68,26 @@ android {
 }
 
 dependencies {
-    // Compose BOM (يختار نسخ Compose المتوافقة تلقائياً)
-    implementation(platform("androidx.compose:compose-bom:+"))
+    // AndroidX (pinned versions compatible with compileSdk 35 / AGP 8.7.x)
+    implementation("androidx.core:core-ktx:1.15.0")
+    implementation("androidx.activity:activity-compose:1.9.3")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
+    implementation("androidx.navigation:navigation-compose:2.8.7")
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
 
-    // AndroidX الأساسيات
-    implementation("androidx.core:core-ktx:+")
-    implementation("androidx.activity:activity-compose:+")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:+")
-    implementation("androidx.navigation:navigation-compose:+")
-    implementation("androidx.datastore:datastore-preferences:+")
-
-    // Compose (بدون أرقام إصدارات)
+    // Compose BOM (no versions on Compose artifacts)
+    implementation(platform("androidx.compose:compose-bom:2024.06.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material-icons-extended")
 
-    // ML Kit (اتركه ثابتاً)
+    debugImplementation("androidx.compose.ui:ui-tooling")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // ML Kit
     implementation("com.google.mlkit:image-labeling:17.0.9")
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:+")
-
-    // Debug
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
 }
